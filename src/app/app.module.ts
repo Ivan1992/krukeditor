@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { RouterModule }   from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { SimpletinyComponent } from './simpletiny.component';
@@ -14,13 +15,17 @@ import { KeysPipe } from './keys.pipe';
 import { LocalStorageModule } from 'angular-2-local-storage';
 import { FormsModule } from '@angular/forms';
 import { KrukfilterPipe } from './krukfilter.pipe';
+import { TableComponent } from './table/table.component';
+import { EditorComponent } from './editor/editor.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SimpletinyComponent,
     KeysPipe,
-    KrukfilterPipe
+    KrukfilterPipe,
+    TableComponent,
+    EditorComponent
   ],
   imports: [
     BrowserModule,
@@ -31,8 +36,14 @@ import { KrukfilterPipe } from './krukfilter.pipe';
     LocalStorageModule.withConfig({
       prefix: 'my-app',
       storageType: 'localStorage'
-  }),
-    FormsModule
+    }),
+    FormsModule,
+    RouterModule.forRoot([
+      {path: '', component: EditorComponent},
+      {path: 'table', component: TableComponent},
+      {path: '**', component: EditorComponent}
+    ])
+
   ],
   providers: [ ],
   bootstrap: [AppComponent]

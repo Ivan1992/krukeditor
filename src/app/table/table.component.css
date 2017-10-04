@@ -1,0 +1,54 @@
+@font-face {
+    font-family: Kruk;
+    src: url('../../assets/fonts/Kruk-Kalashn.ttf');
+}
+
+@font-face {
+    font-family: Turaevo;
+    src: url('../../assets/fonts/Turaevo.ttf');
+}
+
+@font-face {
+    font-family: Grebnev;
+    src: url('../../assets/fonts/GrebnevUCS.ttf');
+}
+
+@font-face {
+    font-family: KanonnikUCS;
+    src: url('../../assets/fonts/KanonnikUCS.ttf');
+}
+
+@font-face {
+    font-family: KnigopechatnyaUCS;
+    src: url('../../assets/fonts/KnigopechatnyaUCS.ttf');
+}
+
+@font-face {
+    font-family: Vetrograd;
+    src: url('../../assets/fonts/VertUcs.ttf');
+}
+
+@font-face {
+    font-family: Bukvica;
+    src: url('../../assets/fonts/bukvica.ttf');
+}
+
+@font-face {
+    font-family: Indycton;
+    src: url('../../assets/fonts/IndUcs.ttf');
+}
+
+.kalashnikov {
+    font-family: Kruk;
+    font-size: 4em;
+    border: 0;
+}
+
+.red {
+    color: red;
+}
+
+.highlight {
+    background-color: gainsboro;
+    cursor: pointer;
+}
