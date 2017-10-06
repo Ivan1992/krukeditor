@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LocalStorageService } from 'angular-2-local-storage';
 
 @Component({
   selector: 'app-table',
@@ -7,9 +8,41 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TableComponent implements OnInit {
 
-  constructor() { }
+  doubleArray;
+  notes = [{name: "ут", value: false},
+  {name: "ре", value: false},
+  {name: "ми", value: false},
+  {name: "фа", value: false},
+  {name: "соль", value: false},
+  {name: "ля", value: false}];
+
+  sounds = 0;
+
+  constructor(private localStorageService: LocalStorageService) { }
 
   ngOnInit() {
+    this.doubleArray = this.buildArr(this.KRUK);
+  }
+
+  buildArr(theArr) {
+    let step = 10;
+    var arrOfarr = [];
+    for(var i = 0; i < theArr.length ; i+=step) {
+        var row = [];
+        for(var x = 0; x < step; x++) {
+          var value = theArr[i + x];
+            if (!value) {
+                break;
+            }
+            row.push(value);
+        }
+        arrOfarr.push(row);
+    }
+    return arrOfarr;
+  }
+
+  select(item) {
+    
   }
 
 
