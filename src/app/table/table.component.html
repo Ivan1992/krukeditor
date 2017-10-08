@@ -29,9 +29,18 @@
     </md-input-container>
     <button (click)="info()">info</button>
     <br />
-    <span *ngFor="let entry of current.opts; let j = index">
-        <!-- <md-checkbox type="checkbox" *ngIf="j>0" [(ngModel)]="current.opts[j]">{{opts[j-1].label}}</md-checkbox> -->
-        <md-checkbox [(ngModel)]="current.opts[j]">{{opts[j].label}}</md-checkbox>
-    </span>
+    <md-checkbox [(ngModel)]="current.opts[0]">{{opts[0].label}}</md-checkbox>
+    <md-checkbox [(ngModel)]="current.opts[1]">{{opts[1].label}}</md-checkbox>
+    <md-checkbox [(ngModel)]="current.opts[2]">{{opts[2].label}}</md-checkbox>
+    <md-checkbox [(ngModel)]="current.opts[3]">{{opts[3].label}}</md-checkbox>
+    <md-checkbox [(ngModel)]="current.opts[4]">{{opts[4].label}}</md-checkbox>
+    <md-checkbox [(ngModel)]="current.opts[5]">{{opts[5].label}}</md-checkbox>
+    <md-checkbox [(ngModel)]="current.opts[6]">{{opts[6].label}}</md-checkbox>
+    <md-checkbox [(ngModel)]="current.opts[7]">{{opts[7].label}}</md-checkbox>
+    <md-checkbox [(ngModel)]="current.opts[8]">{{opts[8].label}}</md-checkbox>
+    <md-checkbox [(ngModel)]="current.opts[9]">{{opts[9].label}}</md-checkbox>
+    <md-checkbox [(ngModel)]="current.opts[10]">{{opts[10].label}}</md-checkbox>
+    <md-checkbox [(ngModel)]="current.opts[11]">{{opts[11].label}}</md-checkbox>
+    <md-checkbox [(ngModel)]="current.opts[12]">{{opts[12].label}}</md-checkbox>
   </md-card>
 </div>
