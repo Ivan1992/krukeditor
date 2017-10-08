@@ -1,15 +1,21 @@
-<table class="kalashnikov centerTable" align="center">
-  <tr *ngFor="let row of doubleArray">
-    <td *ngFor="let item of row | krukfilter: opts:notes:sounds:opts[0].value:opts[1].value:opts[2].value:opts[3].value:opts[4].value:opts[5].value:opts[6].value:opts[7].value:opts[8].value:opts[9].value:opts[10].value:opts[11].value:opts[12].value:notes[0].value:notes[1].value:notes[2].value:notes[3].value:notes[4].value:notes[5].value" [ngClass]="item.clazz ? item.clazz : ''" (mouseenter)="hoverIn(item)" (mouseleave)="hoverOut(item)" [innerHtml]="item.value" (click)="select(item)" style="padding: 5px;"></td>
-  </tr>
-</table>
+<div class="wrapper" style="margin-bottom: 200px">
+  <table class="kalashnikov centerTable" align="center">
+    <tr *ngFor="let row of doubleArray">
+      <td *ngFor="let item of row" [ngClass]="item.clazz ? item.clazz : ''" (mouseenter)="hoverIn(item)" (mouseleave)="hoverOut(item)" [innerHtml]="item.value" (click)="selectCurrent(item)" style="padding: 5px;"></td>
+    </tr>
+  </table>
 
-<button md-raised-button (click)="status()">Статус в консоль</button>
+  <button md-raised-button (click)="status()">Статус в консоль</button>
+  <br /><br />
+  <button md-raised-button (click)="add()">Добавить крюк</button>
+  <button md-raised-button (click)="save()">Сохранить</button>
+</div>
+
 <div class="footer">
   <md-card>
     <div class="kalashnikov" [innerHtml]="current.value"></div>
-    <span style="font-size:2em">{{i}}</span>
-    <md-input-container style="width: 30%;">
+    <span style="font-size:2em">0</span>
+    <md-input-container style="width: 25%;">
       <input mdInput placeholder="значение" [(ngModel)]="current.value">
     </md-input-container>
     <md-input-container>
@@ -17,36 +23,15 @@
     </md-input-container>
     <md-input-container>
         <input mdInput placeholder="Кол-во звуков" [(ngModel)]="current.sounds">
-      </md-input-container>
+    </md-input-container>
+    <md-input-container style="width: 30%;">
+      <input mdInput placeholder="Название" [(ngModel)]="current.name">
+    </md-input-container>
+    <button (click)="info()">info</button>
     <br />
-    <span *ngFor="let entry of current | keys">
-      <md-checkbox *ngIf="entry.key !== 'value' && entry.key !== 'pitch' && entry.key !== 'sounds'" [(ngModel)]="current[entry.key]">{{entry.key}}</md-checkbox>
+    <span *ngFor="let entry of current.opts; let j = index">
+        <!-- <md-checkbox type="checkbox" *ngIf="j>0" [(ngModel)]="current.opts[j]">{{opts[j-1].label}}</md-checkbox> -->
+        <md-checkbox [(ngModel)]="current.opts[j]">{{opts[j].label}}</md-checkbox>
     </span>
   </md-card>
 </div>
-<!--<div *ngFor="let kruk of KRUK; let i = index;">
-    <md-card *ngIf="i > -1">
-        
-        <div class="kalashnikov" [innerHtml]="KRUK[i].value"></div>
-        <span style="font-size:2em">{{i}}</span>
-        <md-input-container style="width: 30%;">
-          <input mdInput placeholder="значение" [(ngModel)]="KRUK[i].value">
-        </md-input-container>
-        <md-input-container>
-          <input mdInput placeholder="Самая высокая нота" [(ngModel)]="KRUK[i].pitch">
-        </md-input-container>
-        <md-input-container>
-            <input mdInput placeholder="Кол-во звуков" [(ngModel)]="KRUK[i].sounds">
-          </md-input-container>
-        <br />
-        <span *ngFor="let entry of KRUK[i] | keys">
-          <md-checkbox *ngIf="entry.key !== 'value' && entry.key !== 'pitch' && entry.key !== 'sounds'" [(ngModel)]="KRUK[i][entry.key]">{{entry.key}}</md-checkbox>
-        </span>
-        <hr />
-    </md-card>
-    
-</div>-->
-<br /><br />
-<button md-raised-button (click)="add()">Добавить крюк</button>
-<button md-raised-button (click)="save()">Сохранить</button>
-

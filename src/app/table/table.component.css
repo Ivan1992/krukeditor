@@ -52,3 +52,15 @@
     background-color: gainsboro;
     cursor: pointer;
 }
+
+.footer {
+    position: fixed; 
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+}
+
+.footer > md-card {
+    background-color: gainsboro;
+}
