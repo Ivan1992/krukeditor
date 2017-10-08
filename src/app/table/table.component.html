@@ -1,20 +1,40 @@
 <div class="wrapper" style="margin-bottom: 200px">
+  <div style="text-align:center">
+    <md-input-container>
+      <input #stepInput mdInput placeholder="Кол-во знамён в строке [1-15]" [value]="step">
+    </md-input-container>
+    <button (click)="changeStep(stepInput.value)" md-raised-button color="primary">Изменить</button>
+    
+    <br />
+    <button md-raised-button color="accent" (click)="add()">Добавить крюк</button>
+    <br />
+  </div>
+
   <table class="kalashnikov centerTable" align="center">
     <tr *ngFor="let row of doubleArray">
       <td *ngFor="let item of row" [ngClass]="item.clazz ? item.clazz : ''" (mouseenter)="hoverIn(item)" (mouseleave)="hoverOut(item)" [innerHtml]="item.value" (click)="selectCurrent(item)" style="padding: 5px;"></td>
     </tr>
   </table>
+  <br />
+  <div style="text-align:center">
+    <button md-raised-button color="accent" (click)="add()">Добавить крюк</button>
+    <button md-raised-button color="accent" (click)="export()">Сохранить</button>
+    <button *ngIf="areaVisible" md-raised-button color="primary" (click)="areaVisible = false">Закрыть</button>
+    <br />
+    <div *ngIf="areaVisible" style="width:100%">
+        <md-input-container style="width:80%">
+            <textarea mdInput rows="30" placeholder="Скопируйте текст в отдельный файл" [(ngModel)]="parsedKRUK"></textarea>
+        </md-input-container>
+      </div>
+  </div>
 
-  <button md-raised-button (click)="status()">Статус в консоль</button>
-  <br /><br />
-  <button md-raised-button (click)="add()">Добавить крюк</button>
-  <button md-raised-button (click)="save()">Сохранить</button>
+  <br />
+
 </div>
 
 <div class="footer">
   <md-card>
     <div class="kalashnikov" [innerHtml]="current.value"></div>
-    <span style="font-size:2em">0</span>
     <md-input-container style="width: 25%;">
       <input mdInput placeholder="значение" [(ngModel)]="current.value">
     </md-input-container>
@@ -24,10 +44,13 @@
     <md-input-container>
         <input mdInput placeholder="Кол-во звуков" [(ngModel)]="current.sounds">
     </md-input-container>
-    <md-input-container style="width: 30%;">
+    <md-input-container>
       <input mdInput placeholder="Название" [(ngModel)]="current.name">
     </md-input-container>
-    <button (click)="info()">info</button>
+    <md-input-container>
+        <input #ind mdInput placeholder="Индекс [0-{{this.KRUK.length-1}}]" [value]="current.ind">
+    </md-input-container>
+    <button (click)="changeIndex(current.ind, ind.value)" md-raised-button color="primary">Изменить индекс</button>
     <br />
     <md-checkbox [(ngModel)]="current.opts[0]">{{opts[0].label}}</md-checkbox>
     <md-checkbox [(ngModel)]="current.opts[1]">{{opts[1].label}}</md-checkbox>

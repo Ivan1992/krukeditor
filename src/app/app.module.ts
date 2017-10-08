@@ -39,9 +39,9 @@ import { EditorComponent } from './editor/editor.component';
     }),
     FormsModule,
     RouterModule.forRoot([
-      {path: '', component: EditorComponent},
+      {path: '', component: TableComponent},
       {path: 'table', component: TableComponent},
-      {path: '**', component: EditorComponent}
+      {path: '**', component: TableComponent}
     ])
 
   ],
