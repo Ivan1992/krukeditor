@@ -38,6 +38,10 @@
     src: url('../../assets/fonts/IndUcs.ttf');
 }
 
+.asd {
+    font-family: "Times New Roman", Times, serif;
+}
+
 .kalashnikov {
     font-family: Kruk;
     font-size: 4em;

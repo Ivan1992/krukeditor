@@ -4,22 +4,15 @@
       <input #stepInput mdInput placeholder="Кол-во знамён в строке [1-15]" [value]="step">
     </md-input-container>
     <button (click)="changeStep(stepInput.value)" md-raised-button color="primary">Изменить</button>
-    
-    <br />
-    <button md-raised-button color="accent" (click)="add()">Добавить крюк</button>
-    <br />
   </div>
 
   <table class="kalashnikov centerTable" align="center">
     <tr *ngFor="let row of doubleArray">
-      <td *ngFor="let item of row" [ngClass]="item.clazz ? item.clazz : ''" (mouseenter)="hoverIn(item)" (mouseleave)="hoverOut(item)" [innerHtml]="item.value" (click)="selectCurrent(item)" style="padding: 5px;"></td>
+      <td *ngFor="let item of row" [ngClass]="item.clazz" (mouseenter)="hoverIn(item)" (mouseleave)="hoverOut(item)" [innerHtml]="item.value" (click)="selectCurrent(item)" style="padding: 5px;"></td>
     </tr>
   </table>
   <br />
   <div style="text-align:center">
-    <button md-raised-button color="accent" (click)="add()">Добавить крюк</button>
-    <button md-raised-button color="accent" (click)="export()">Сохранить</button>
-    <button *ngIf="areaVisible" md-raised-button color="primary" (click)="areaVisible = false">Закрыть</button>
     <br />
     <div *ngIf="areaVisible" style="width:100%">
         <md-input-container style="width:80%">
@@ -34,7 +27,12 @@
 
 <div class="footer">
   <md-card>
-    <div class="kalashnikov" [innerHtml]="current.value"></div>
+    <div>
+        <button md-raised-button color="accent" (click)="add()">Добавить крюк</button>
+        <button md-raised-button color="accent" (click)="export()">Сохранить</button>
+        <button *ngIf="areaVisible" md-raised-button color="primary" (click)="areaVisible = false">Закрыть</button>
+        <span class="kalashnikov" [innerHtml]="current.value"></span>
+    </div>
     <md-input-container style="width: 25%;">
       <input mdInput placeholder="значение" [(ngModel)]="current.value">
     </md-input-container>
@@ -48,22 +46,23 @@
       <input mdInput placeholder="Название" [(ngModel)]="current.name">
     </md-input-container>
     <md-input-container>
-        <input #ind mdInput placeholder="Индекс [0-{{this.KRUK.length-1}}]" [value]="current.ind">
+        <input #ind mdInput placeholder="Порядковый номер [0-{{this.KRUK.length-1}}]" [value]="current.ind">
     </md-input-container>
     <button (click)="changeIndex(current.ind, ind.value)" md-raised-button color="primary">Изменить индекс</button>
-    <br />
-    <md-checkbox [(ngModel)]="current.opts[0]">{{opts[0].label}}</md-checkbox>
-    <md-checkbox [(ngModel)]="current.opts[1]">{{opts[1].label}}</md-checkbox>
-    <md-checkbox [(ngModel)]="current.opts[2]">{{opts[2].label}}</md-checkbox>
-    <md-checkbox [(ngModel)]="current.opts[3]">{{opts[3].label}}</md-checkbox>
-    <md-checkbox [(ngModel)]="current.opts[4]">{{opts[4].label}}</md-checkbox>
-    <md-checkbox [(ngModel)]="current.opts[5]">{{opts[5].label}}</md-checkbox>
-    <md-checkbox [(ngModel)]="current.opts[6]">{{opts[6].label}}</md-checkbox>
-    <md-checkbox [(ngModel)]="current.opts[7]">{{opts[7].label}}</md-checkbox>
-    <md-checkbox [(ngModel)]="current.opts[8]">{{opts[8].label}}</md-checkbox>
-    <md-checkbox [(ngModel)]="current.opts[9]">{{opts[9].label}}</md-checkbox>
-    <md-checkbox [(ngModel)]="current.opts[10]">{{opts[10].label}}</md-checkbox>
-    <md-checkbox [(ngModel)]="current.opts[11]">{{opts[11].label}}</md-checkbox>
-    <md-checkbox [(ngModel)]="current.opts[12]">{{opts[12].label}}</md-checkbox>
+    <div>
+      <md-checkbox [(ngModel)]="current.opts[0]">{{opts[0].label}}</md-checkbox>
+      <md-checkbox [(ngModel)]="current.opts[1]">{{opts[1].label}}</md-checkbox>
+      <md-checkbox [(ngModel)]="current.opts[2]">{{opts[2].label}}</md-checkbox>
+      <md-checkbox [(ngModel)]="current.opts[3]">{{opts[3].label}}</md-checkbox>
+      <md-checkbox [(ngModel)]="current.opts[4]">{{opts[4].label}}</md-checkbox>
+      <md-checkbox [(ngModel)]="current.opts[5]">{{opts[5].label}}</md-checkbox>
+      <md-checkbox [(ngModel)]="current.opts[6]">{{opts[6].label}}</md-checkbox>
+      <md-checkbox [(ngModel)]="current.opts[7]">{{opts[7].label}}</md-checkbox>
+      <md-checkbox [(ngModel)]="current.opts[8]">{{opts[8].label}}</md-checkbox>
+      <md-checkbox [(ngModel)]="current.opts[9]">{{opts[9].label}}</md-checkbox>
+      <md-checkbox [(ngModel)]="current.opts[10]">{{opts[10].label}}</md-checkbox>
+      <md-checkbox [(ngModel)]="current.opts[11]">{{opts[11].label}}</md-checkbox>
+      <md-checkbox [(ngModel)]="current.opts[12]">{{opts[12].label}}</md-checkbox>
+    </div>
   </md-card>
 </div>
