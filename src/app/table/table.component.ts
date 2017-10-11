@@ -101,6 +101,7 @@ export class TableComponent implements OnInit {
     this.current.clazz = "";
     this.current = item;
     this.current.clazz = "highlight";
+    this.save();
   }
 
 
