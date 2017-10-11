@@ -67,9 +67,9 @@ export class TableComponent implements OnInit {
 
   add() {
     this.current.clazz = "";
-    let newObj = Object.assign({}, this.current);
+    let newObj = JSON.parse(JSON.stringify(this.current));
     newObj.ind = this.KRUK.length;
-    this.KRUK.push(Object.assign({}, newObj));
+    this.KRUK.push(newObj);
     this.current = newObj;
     this.doubleArray = this.buildArr(this.KRUK);
     this.current.clazz = "highlight";
@@ -81,14 +81,12 @@ export class TableComponent implements OnInit {
   }
 
   changeIndex(oldVal, newVal) {
-    console.log("[1] currentIndex="+this.current.ind);
     if (newVal >= 0 && newVal <= this.KRUK.length-1 && oldVal!=newVal) {
       this.KRUK.splice(newVal, 0, this.KRUK.splice(oldVal, 1)[0]);
       this.doubleArray = this.buildArr(this.KRUK);
       this.current.ind = newVal;
       this.save();
     }
-    console.log("[2] currentIndex="+this.current.ind);
   }
 
   export() {
