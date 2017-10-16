@@ -33,7 +33,7 @@ export class TableComponent implements OnInit {
   ngOnInit() {
     let getObj = this.localStorageService.get("KRUK");
     if (getObj) {
-      //this.KRUK = JSON.parse(JSON.stringify(this.localStorageService.get("KRUK")));
+      this.KRUK = JSON.parse(JSON.stringify(this.localStorageService.get("KRUK")));
     }
     this.doubleArray = this.buildArr(this.KRUK);
     this.current = this.KRUK[0];
