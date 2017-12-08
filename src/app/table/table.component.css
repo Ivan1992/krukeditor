@@ -5,6 +5,12 @@
 }
 
 @font-face {
+    font-family: KrukNew;
+    /* src: url('../../assets/fonts/Kruk-Kalashn.ttf'); */
+    src: url('../../assets/fonts/Kruk-Kalashn_4.ttf');
+}
+
+@font-face {
     font-family: Turaevo;
     src: url('../../assets/fonts/Turaevo.ttf');
 }
@@ -45,6 +51,12 @@
 
 .kalashnikov {
     font-family: Kruk;
+    font-size: 4em;
+    border: 0;
+}
+
+.kalashnikovNew {
+    font-family: KrukNew;
     font-size: 4em;
     border: 0;
 }

@@ -1,12 +1,13 @@
 <div class="wrapper" style="margin-bottom: 200px">
   <div style="text-align:center">
+    <button (click)="changeFont()" md-raised-button color="accent">Изменить шрифт</button>
     <md-input-container>
       <input #stepInput mdInput placeholder="Кол-во знамён в строке [1-15]" [value]="step">
     </md-input-container>
     <button (click)="changeStep(stepInput.value)" md-raised-button color="primary">Изменить</button>
   </div>
 
-  <table class="kalashnikov centerTable" align="center">
+  <table [ngClass]="currentFont" class="centerTable" align="center">
     <tr *ngFor="let row of doubleArray">
       <td *ngFor="let item of row" [ngClass]="item.clazz" (mouseenter)="hoverIn(item)" (mouseleave)="hoverOut(item)" [innerHtml]="item.value" (click)="selectCurrent(item)" style="padding: 5px;"></td>
     </tr>
@@ -31,7 +32,7 @@
         <button md-raised-button color="accent" (click)="add()">Добавить крюк</button>
         <button md-raised-button color="accent" (click)="export()">Сохранить</button>
         <button *ngIf="areaVisible" md-raised-button color="primary" (click)="areaVisible = false">Закрыть</button>
-        <span class="kalashnikov" [innerHtml]="current.value"></span>
+        <span [ngClass]="currentFont" [innerHtml]="current.value"></span>
     </div>
     <md-input-container style="width: 25%;">
       <input mdInput placeholder="значение" [(ngModel)]="current.value">
